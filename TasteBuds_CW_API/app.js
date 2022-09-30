@@ -1,6 +1,5 @@
-const express = require('express');
-//const colors = require('colors')
-//const dotenv = require('dotenv').config()
+const express = require('express');const colors = require('colors')
+const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
 const home = require('./routes/home');
 const Outlets = require('./routes/outlets')
