@@ -4,7 +4,11 @@ const {getOutlets,getOutletsID,newOutlet,deletOutlet} = require('../controllers/
 
 router.get('/', getOutlets )
 
+router.get('/:id', getOutletsID )
 
+router.post('/', newOutlet )
+
+router.delete('/:id', deletOutlet )
 
 
 
