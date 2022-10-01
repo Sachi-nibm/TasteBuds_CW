@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler')
-//const Outlet = require("../models/outlet");
-
+const Outlet = require("../models/oultet");
 
 // @desc     Get Outlets
 // @route    GET /api/outlets
