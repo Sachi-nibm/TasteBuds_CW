@@ -7,6 +7,7 @@ const home = require('./routes/home');
 const Outlets = require('./routes/outlets')
 const Foods = require('./routes/foods')
 const user = require('./routes/users')
+const signin = require('./routes/signin')
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,6 +22,7 @@ app.use("/",home);
 app.use("/api/outlets", Outlets);
 app.use("/api/foods", Foods);
 app.use("/api/users", user);
+app.use("/api/signin", signin);
 
 app.use(errorHandler)
 
