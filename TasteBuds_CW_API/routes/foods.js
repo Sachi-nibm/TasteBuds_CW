@@ -1,10 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const { getFoods,getFoodID } = require('../controllers/foodController')
+const { getFoods,postFood,deleteFood } = require('../controllers/foodController')
 
 router.get('/', getFoods)
 
+router.post('/', postFood)
 
+router.delete('/:id', deleteFood)
 
 
 
