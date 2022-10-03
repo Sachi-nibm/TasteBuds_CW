@@ -62,7 +62,6 @@ const deletOutlet = asyncHandler(async(req,res) => {
 
 module.exports = {
     getOutlets,
-    getOutletsID,
     newOutlet,
     deletOutlet
 }
