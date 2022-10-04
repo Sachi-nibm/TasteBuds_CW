@@ -3,18 +3,23 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const registerUser = async(req,res) =>{
-    const{ name, email, password, isAdmin }= req.body
+    const name = req.body.name
+    const email = req.body.email
+    const password = req.body.password
+    const isAdmin = req.body.isAdmin
+    // { name, email, password, isAdmin }
     if(!name || !email || !password){
         return res  
             .status(400)
-            .send("Please fill the all Required Fileds.")
+            .send({ message: "Please fill the all Required Fileds."})
+            
     }
    // check if user exist 
     const userExist = await User.findOne({email})
     if(userExist){
         return res  
             .status(400)
-            .send("User already exisit.")
+            .send({ message: "User already exisit."})
     }
 
     const salt = await bcrypt.genSalt(10)
@@ -39,7 +44,7 @@ const registerUser = async(req,res) =>{
     }else {
         return res
             .status(400)
-            .send("Invalid User Data") 
+            .send({ message: "Invalid User Data"}) 
     }
 }
 
