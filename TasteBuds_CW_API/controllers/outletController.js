@@ -12,12 +12,22 @@ const getOutlets = asyncHandler(async (req, res) => {
 // @desc     Add New Outlet
 // @route    POST /api/outlets
 const newOutlet = asyncHandler(async(req,res) =>{
+    let id =  req.body.outletID
+    let outletID = await Outlet.findOne({id })
     if(!req.body.outletID || !req.body.name || !req.body.address || !req.body.picture ){
-        res.status(400)
-        throw new Error("Please fill the required flieds")
-    }else if (req.body.name.length <3 || req.body.address.length <5 ){
-        res.status(400)
-        throw new Error("Please Provide the Correct details.")
+        return res 
+        .status(400)
+        .send({ message:"Please fill the required flieds"})
+    }
+    else if(req.body.name.length <3 || req.body.address.length < 5){
+        return res
+        .status(400)
+        .send({ message: "Please Provide the Correct details."})
+    } 
+    if(outletID){
+        return res  
+            .status(400)
+            .send({ message: "Outlet ID already exisit."})
     }
     let newOutlets = new Outlet ({
         outletID : req.body.outletID,
@@ -28,10 +38,14 @@ const newOutlet = asyncHandler(async(req,res) =>{
     });
     try{
         newOutlets = await newOutlets.save();
-        res.status(200).json(newOutlets);    
-    } catch(ex){
-        res.status(500).send("Error", ex.message);
-    }
+        return res
+            .status(200)
+            .send(newOutlets);    
+   } catch(ex){
+    return res
+        .status(500)
+        .send("Error", ex.message);
+   }
 })
 
 // @desc     Remove Specific Outlet
