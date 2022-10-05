@@ -3,6 +3,7 @@ import Outlets from './pages/outlets';
 import Foods from './pages/foods';
 import SignIn from './components/signIn'
 import SignUp from './components/signUp'
+import AddOutlet from './pages/createOutlet';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/foods" element={<Foods />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/SignUp" element={<SignUp />} />
+                <Route path="/addoutlet" element={<AddOutlet />} />
             </Routes>
         </Router>
     </div>
