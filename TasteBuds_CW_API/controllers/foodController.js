@@ -11,25 +11,16 @@ const getFoods = asyncHandler(async (req, res) => {
 // @desc     POST Food
 // @route    POST /api/foods
 const postFood = asyncHandler (async(req,res)=>{
-    if(!req.body.outletID || !req.body.foodID || !req.body.name || !req.body.price || !req.body.description || !req.body.picture){
-        return res
-            .status(400)
-            .send("Please fill the required flieds")
-        }else if (req.body.name.length <3 || req.body.description.length <5 ){
-            return res
-                .status(400)
-                .send("Please Provide the Correct details.")
-        }
-    let newFood = new Food({
-        outletID : req.body.outletID,
-        foodID : req.body.foodID,
-        name : req.body.name,
-        price : req.body.price,
-        description : req.body.description,
-        rating : req.body.rating,
-        picture :req.body.picture,
-    })
-     try{
+    try{
+        let newFood = new Food({
+            outletID : req.body.outletID,
+            name : req.body.name,
+            price : req.body.price,
+            description : req.body.description,
+            rating : req.body.rating,
+            picture :req.body.picture,
+        })
+        
         newFood = await newFood.save();
         return res
             .status(200)
@@ -37,7 +28,7 @@ const postFood = asyncHandler (async(req,res)=>{
      }catch(ex){
         return res
             .status(500)
-            .send("Error : ", ex);
+            .send({ message:"Error : ", ex});
      }
  })
 
