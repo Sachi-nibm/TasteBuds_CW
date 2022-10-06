@@ -1,9 +1,15 @@
+// File Name - OredrController
+// File Desc - OredrController
+// Create By - Sachini Perera - 05/10/2022
+
+
 const asyncHandler = require('express-async-handler')
 const User = require("../models/user");
 const Food  = require("../models/food");
 const order = require("../models/order");
 
-//View cart 
+//Function Name - getOrders
+//Function Desc - View Order
  const getOrders = asyncHandler(async(req,res) => {
     try {
         let cart = await order.findOne({user : req.params.id})
@@ -19,7 +25,9 @@ const order = require("../models/order");
             .send({message : ex.message});
     }
 });
-//Add food to cart
+
+//Function Name - getOrders
+//Function Desc - Add order to cart
 const newOrder = asyncHandler(async(req,res) => {
     if( !req.body.user || !req.body.foodID){
         return res
@@ -79,7 +87,30 @@ const newOrder = asyncHandler(async(req,res) => {
         }
     }
 });
+//Function Name - deletOrder
+//Function Desc - Delete order from cart
+const deletOrder = asyncHandler(async(req,res) => {
+    let cart = await order.findOne({user : req.params.id})
+    try {
+        cart = await order.findOneAndUpdate(
+          { user: req.params.user },
+          { $pull: { items: { _id: req.params.id } } }
+        );
+        cart.Items.pull({ _id: req.params.id });
+        if (!cart)
+          return res
+            .status(404)
+            .send("The Item you request to delete,not found");
+        return res.send(cart);
+      } catch (err) {
+            return res
+                .status(500)
+                .send(err.message);
+      }
+});
 
 module.exports = {
-    getOrders,newOrder
+    getOrders,
+    newOrder,
+    deletOrder
 }
