@@ -10,6 +10,6 @@ router.get('/:id', getOrders )
 
 router.post('/', newOrder )
 
-router.delete('/:id', deletOrder )
+//router.delete('/:id', deletOrder )
 
 module.exports = router

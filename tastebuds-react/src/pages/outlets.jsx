@@ -16,7 +16,6 @@ class Outlets extends Component{
                             <OutletCard 
                                 key={outlet.id} 
                                 outlet= {outlet} 
-                                onDelete = {() => this.deleteOutlet(outlet.id)}
                             />
                         </div>
                     ))}
@@ -38,12 +37,6 @@ class Outlets extends Component{
             };
         });
         this.setState({allOutlets : oultets})
-    }
-
-    async deleteOutlet(id){
-        await axios.delete(`http://localhost:4000/api/outlets/${id}`)
-        let updatedOutlet = this.state.allOutlets.filter(outlet => outlet.id !== id)
-        this.setState({allOutlets : updatedOutlet });
     }
 }
 

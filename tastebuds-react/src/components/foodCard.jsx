@@ -1,21 +1,21 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 
-class OutletCard extends Component{
+class FoodCard extends Component{
     render(){
         return(
             <div className="card" style={{width: "20rem" ,height: "28rem" , marginTop:"20px"}}  >
                 <img 
                     style = {{height : "15rem"}}
-                    src={this.props.outlet.picture}    
+                    src={this.props.food.picture}    
                     className="card-img-top" 
                     alt="..."
                 />
                 <div className="card-body" style={{ padding : "10px"}}>
-                    <h5 className="card-title">{this.props.outlet.name}</h5>
-                        Adress : {this.props.outlet.address}
+                    <h5 className="card-title">{this.props.food.name}</h5>
+                        Description : {this.props.food.description}
                         <br/>
-                        Loaction : 
+                        Price : {this.props.food.price}
                         <br/>
                         Rating : {this.props.outlet.rating}
                     <br/>
@@ -33,4 +33,4 @@ class OutletCard extends Component{
     }
 }
 
-export default OutletCard
+export default FoodCard

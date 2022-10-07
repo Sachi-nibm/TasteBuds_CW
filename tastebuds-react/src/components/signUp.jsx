@@ -8,7 +8,7 @@ const Signup= () => {
     const navigate = useNavigate();
     const handleSignup= async() => {
         //console.log(email,password);
-        let result = await fetch("http://localhost:5000/api/users",{
+        let result = await fetch("http://localhost:4000/api/users",{
             method : 'post',
             body : JSON.stringify({name, email, password}),
             headers: {
