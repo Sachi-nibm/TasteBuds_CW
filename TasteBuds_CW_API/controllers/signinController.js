@@ -21,7 +21,6 @@ const signinUser = async(req,res) => {
                 token : generateToken(user._id)
                 
         })
-        console.log(name,email)
     }else {
         return res
             .status(400)

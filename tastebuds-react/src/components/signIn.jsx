@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const SignIn =() =>{
     const [email,setEmail]= React.useState('');
@@ -43,6 +43,10 @@ const SignIn =() =>{
                 style={{margin : "20px", width : "150px", padding : "10px", backgroundColor: "skyblue", border: "solid 1px", cursor: "pointer"}}>
                 Login
             </button>
+            <br/>
+            <div className="text-center position-absolute bottom-5 translate-middle-x" aria-current="page" style={{marginLeft : "15%", width : "300px", cursor: "pointer"}}>
+                Already have an account? <Link to="/signup">SignUp here</Link>
+            </div>
         </div>
     )
 }
