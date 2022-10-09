@@ -34,6 +34,9 @@ const Navigation = () => {
                             <li className="nav-item">
                                 <Link to ="/addfood" className="nav-link active" aria-current="page">Add Food</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to ="/users" className="nav-link active" aria-current="page">Users</Link>
+                            </li>
                         </ul>
                         <div className="float-end">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
