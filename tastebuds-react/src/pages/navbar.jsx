@@ -32,7 +32,7 @@ const Navigation = () => {
                                 <Link to ="/addoutlet" className="nav-link active" aria-current="page">Add Outlet</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to ="addfood" className="nav-link active" aria-current="page">Add Food</Link>
+                                <Link to ="/addfood" className="nav-link active" aria-current="page">Add Food</Link>
                             </li>
                         </ul>
                         <div className="float-end">

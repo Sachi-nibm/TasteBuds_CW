@@ -5,6 +5,8 @@ import SignIn from './components/signIn'
 import SignUp from './components/signUp'
 import AddOutlet from './pages/createOutlet';
 import NavBar from './pages/navbar';
+import AddFood from './pages/createFood';
+
 
 function App() {
     return (
@@ -17,6 +19,7 @@ function App() {
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/SignUp" element={<SignUp />} />
                 <Route path="/addoutlet" element={<AddOutlet />} />
+                <Route path="/addfood" element={<AddFood />} />
             </Routes>
         </Router>
     </div>
