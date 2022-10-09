@@ -7,21 +7,24 @@ const registerUser = async(req,res) =>{
     const email = req.body.email
     const password = req.body.password
     const isAdmin = req.body.isAdmin
+    const userExist = await User.findOne({email})
     // { name, email, password, isAdmin }
     if(!name || !email || !password){
+        console.log("Please fill the all Required Fileds.")
         return res  
             .status(400)
             .send({ message: "Please fill the all Required Fileds."})
+        
             
-    }
+    }else
    // check if user exist 
-    const userExist = await User.findOne({email})
     if(userExist){
+        console.log("User already exisit.")
         return res  
             .status(400)
             .send({ message: "User already exisit."})
     }
-
+    
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 

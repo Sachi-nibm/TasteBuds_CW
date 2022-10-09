@@ -1,34 +1,31 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 const Signup= () => {
     const [name, setName]= React.useState('');
     const [email, setEmail]= React.useState('');
     const [password, setPassword]= React.useState('');
     const navigate = useNavigate();
+
     const handleSignup= async() => {
-        //console.log(email,password);
-        let result = await fetch("http://localhost:4000/api/users",{
+        console.log(email,password);
+        await fetch("http://localhost:4000/api/users",{
             method : 'post',
-            body : JSON.stringify({name, email, password}),
             headers: {
                 'content-Type': 'application/json'
+            },
+            body : JSON.stringify({name, email, password}),
+        }).then(response => {
+            if(!response.ok){
+                alert("Account creation failed"); 
+            } else {
+                navigate('/signin')
+                alert("User account created successfully!"); 
             }
+        }).catch(err => {
+            console.log(err);
         });
-        result = await result.json();
-        console.log(result)
-        const auth = localStorage.getItem('user')
-        if(auth)
-        {
-            localStorage.setItem('user', JSON.stringify(result));
-            localStorage.setItem("isAdmin", (result.isAdmin));
-            console.log('Admin status :',result.isAdmin)
-            localStorage.setItem("login", true);
-            navigate('/')
-        } else {
-            alert("Something went wrong : Please check the details")
-        }
-  }
+    }
 
     return(
       <div className='login' style={{marginLeft : "30%" , marginTop : "100px"}}>
@@ -49,6 +46,10 @@ const Signup= () => {
                 style={{margin : "20px", width : "150px", padding : "10px", backgroundColor: "skyblue", border: "solid 1px", cursor: "pointer"}}>
                 Register
             </button>
+            <br/>
+            <div className="text-center position-absolute bottom-5 translate-middle-x" aria-current="page" style={{marginLeft : "15%", width : "300px", cursor: "pointer"}}>
+                Already have an account? <Link to="/signin">Login here</Link>
+            </div>
         </div>
       );
   }
