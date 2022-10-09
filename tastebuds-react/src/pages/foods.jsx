@@ -16,6 +16,7 @@ class Foods extends Component{
                             <FoodCard 
                                 key={food.id} 
                                 food= {food} 
+                                onDelete = {() => this.deleteFood(food.id)}
                             />
                         </div>
                     ))}
@@ -38,6 +39,12 @@ class Foods extends Component{
             };
         });
         this.setState({allFoods : foods})
+    }
+
+    async deleteFood(id){
+        await axios.delete(`http://localhost:4000/api/foods${id}`)
+        let updatedFoods = this.state.allFoods.filter(food => food.id !== id)
+        this.setState({allFoods : updatedFoods });
     }
 }
 
