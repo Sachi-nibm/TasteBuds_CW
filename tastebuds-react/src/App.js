@@ -1,12 +1,13 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Outlets from './pages/outlets';
 import Foods from './pages/foods';
-import SignIn from './components/signIn'
-import SignUp from './components/signUp'
+import SignIn from './pages/signIn'
+import SignUp from './pages/signUp'
 import AddOutlet from './pages/createOutlet';
-import NavBar from './pages/navbar';
+import NavBar from './components/navbar';
 import AddFood from './pages/createFood';
 import Orders from './pages/orders';//Added by Sachini - 09/10/2022
+import Customers from './pages/customers'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/addoutlet" element={<AddOutlet />} />
                 <Route path="/addfood" element={<AddFood />} />
                 <Route path="/orders" element={<Orders />} />
+                <Route path="/users" element={<Customers />} />
             </Routes>
         </Router>
     </div>
