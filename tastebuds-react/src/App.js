@@ -4,11 +4,13 @@ import Foods from './pages/foods';
 import SignIn from './components/signIn'
 import SignUp from './components/signUp'
 import AddOutlet from './pages/createOutlet';
+import NavBar from './pages/navbar';
 
 function App() {
     return (
         <div className="App">
         <Router>
+        <NavBar/>
             <Routes>
                 <Route path="/" element={<Outlets />} />
                 <Route path="/foods" element={<Foods />} />
