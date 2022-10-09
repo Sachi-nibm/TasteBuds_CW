@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler')
-//const Food = require('../models/food')
+const Food = require('../models/food')
 
 // @desc     Get Foods
 // @route    GET /api/foods
@@ -28,7 +28,7 @@ const postFood = asyncHandler (async(req,res)=>{
      }catch(ex){
         return res
             .status(500)
-            .send({ message:"Error : ", ex});
+            .send({ message:"Error occure. Please check the log."});
      }
  })
 

@@ -77,7 +77,7 @@ const deletOutlet = asyncHandler(async(req,res) => {
     }catch(ex){
         return res
             .status(500)
-            .send(ex.message);
+            .send({message : ex.message});
     }
 })
 
