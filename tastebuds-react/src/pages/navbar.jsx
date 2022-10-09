@@ -64,7 +64,7 @@ const Navigation = () => {
                                 <Link to ="/" className="nav-link active" aria-current="page">Outlet</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to ="/order" className="nav-link active" aria-current="page">Order</Link>
+                                <Link to ="/orders" className="nav-link active" aria-current="page">Order</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to ="/wishlist" className="nav-link active" aria-current="page">Favorite</Link>
