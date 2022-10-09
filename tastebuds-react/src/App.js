@@ -6,6 +6,7 @@ import SignUp from './components/signUp'
 import AddOutlet from './pages/createOutlet';
 import NavBar from './pages/navbar';
 import AddFood from './pages/createFood';
+import Orders from './pages/orders';//Added by Sachini - 09/10/2022
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/SignUp" element={<SignUp />} />
                 <Route path="/addoutlet" element={<AddOutlet />} />
                 <Route path="/addfood" element={<AddFood />} />
+                <Route path="/orders" element={<Orders />} />
             </Routes>
         </Router>
     </div>
