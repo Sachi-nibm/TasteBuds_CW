@@ -4,6 +4,7 @@ const outletSchema = new mongoose.Schema({
     outletID : {
         type : Number ,
         require : true,
+
     },
 
     name : {
@@ -17,7 +18,7 @@ const outletSchema = new mongoose.Schema({
         type : String,
         require : true,
         minlength: 5,
-        maxlength: 50
+        maxlength: 100
     },
 
     rating : {

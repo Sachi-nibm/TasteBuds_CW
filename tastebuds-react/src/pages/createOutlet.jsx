@@ -1,4 +1,6 @@
 import React from "react";
+import {useNavigate} from 'react-router-dom'
+
 
 const AddOutlet = ()=> {
     const [outletID, setOutletID] =  React.useState('');
@@ -6,10 +8,12 @@ const AddOutlet = ()=> {
     const [address, setAddress] =  React.useState('');
     const [picture, setPicture] =  React.useState('');
     const [rating, setRating] =  React.useState('');
+    const navigate = useNavigate();
 
     const addOutlet = async() => {
-        // console.log(outletID,name,address,rating,picture)
-        let result = await fetch("http://localhost:5000/api/outlets",{
+        try{
+            // console.log(outletID,name,address,rating,picture)
+            let result = await fetch("http://localhost:4000/api/outlets",{
             method : 'post',
             body : JSON.stringify({outletID,name,address,picture,rating}),
             headers: {
@@ -18,6 +22,15 @@ const AddOutlet = ()=> {
         });
         result = await result.json();
         console.log(result);
+        if(result){
+            navigate("/")
+            alert("Outlet added Successfully.!")
+        }else {
+            alert("Something went wrong.Please check the details again.")
+        }
+        }catch{
+            alert("Something went wrong.Please try again later")
+        }
     }
 
     return(

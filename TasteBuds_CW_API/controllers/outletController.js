@@ -24,7 +24,7 @@ const getOutletsID = asyncHandler(async(req,res) => {
 // @route    POST /api/outlets
 const newOutlet = asyncHandler(async(req,res) =>{
     let id =  req.body.outletID
-    let outletID = await Outlet.findOne({id })
+    //let outletID = await Outlet.findOne({id })
     if(!req.body.outletID || !req.body.name || !req.body.address || !req.body.picture ){
         return res 
         .status(400)
@@ -35,11 +35,11 @@ const newOutlet = asyncHandler(async(req,res) =>{
         .status(400)
         .send({ message: "Please Provide the Correct details."})
     } 
-    if(outletID){
-        return res  
-            .status(400)
-            .send({ message: "Outlet ID already exisit."})
-    }
+    // if(outletID){
+    //     return res  
+    //         .status(400)
+    //         .send({ message: "Outlet ID already exisit."})
+    // }
     let newOutlets = new Outlet ({
         outletID : req.body.outletID,
         name : req.body.name,
@@ -55,7 +55,7 @@ const newOutlet = asyncHandler(async(req,res) =>{
    } catch(ex){
     return res
         .status(500)
-        .send("Error", ex.message);
+        .send(ex.Error);
    }
 })
 
@@ -80,10 +80,6 @@ const deletOutlet = asyncHandler(async(req,res) => {
             .send(ex.message);
     }
 })
-
-
-
-
 
 module.exports = {
     getOutlets,
