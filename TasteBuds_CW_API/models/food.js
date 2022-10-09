@@ -6,11 +6,6 @@ const foodSchema = new mongoose.Schema({
         type : Number ,
     },
 
-    foodID : {
-        type : Number ,
-        require : true,
-    },
-
     name : {
         type : String,
         require : true,
