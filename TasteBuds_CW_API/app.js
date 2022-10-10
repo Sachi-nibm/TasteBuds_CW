@@ -10,6 +10,7 @@ const Foods = require('./routes/foods')
 const user = require('./routes/users')
 const signin = require('./routes/signin')
 const order = require("./routes/orders")//Added by Sachini - 04/10/2022
+const wishlist = require("./routes/wishlists")
 
 const PORT = process.env.PORT || 3000;
 
@@ -27,6 +28,7 @@ app.use("/api/foods", Foods);
 app.use("/api/users", user);
 app.use("/api/signin", signin);
 app.use("/api/orders", order);//Added by Sachini - 04/10/2022
+app.use("/api/wishlists", wishlist);
 
 app.use(errorHandler)
 
