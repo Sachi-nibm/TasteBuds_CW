@@ -8,6 +8,7 @@ import NavBar from './components/navbar';
 import AddFood from './pages/createFood';
 import Orders from './pages/orders';//Added by Sachini - 09/10/2022
 import Customers from './pages/customers'
+import Wishlists from './pages/wishlists';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/addfood" element={<AddFood />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/users" element={<Customers />} />
+                <Route path="/wishlists" element={<Wishlists />} />
             </Routes>
         </Router>
     </div>
