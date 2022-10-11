@@ -7,7 +7,7 @@ import AddOutlet from './pages/createOutlet';
 import NavBar from './components/navbar';
 import AddFood from './pages/createFood';
 import Orders from './pages/orders';//Added by Sachini - 09/10/2022
-import Customers from './pages/customers'
+import Customers from './pages/customer'
 import Wishlists from './pages/wishlists';
 
 
