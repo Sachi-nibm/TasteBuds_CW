@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config()
 const cors = require("cors")
 const connectDB = require('./config/db')
 const { errorHandler } = require('./middlewares/errorMiddleware')
+const { logger } = require('./middlewares/logger')
 const home = require('./routes/home');
 const Outlets = require('./routes/outlets')
 const Foods = require('./routes/foods')
@@ -14,10 +15,13 @@ const wishlist = require("./routes/wishlists")
 
 const PORT = process.env.PORT || 3000;
 
+const app = express();
+
+app.use(logger);
+
 //connect to localhost DB
 connectDB()
 
-const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended : false}))

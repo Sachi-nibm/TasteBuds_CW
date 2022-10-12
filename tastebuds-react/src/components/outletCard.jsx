@@ -22,7 +22,7 @@ class OutletCard extends Component{
                     <br/>
                     <div className="container" style={{ padding : "0px"}}>
                         <div className="raw">
-                            <Link to="/foods" className="btn btn-primary" onClick={this.props.onView} >
+                            <Link to="/foods/:id" className="btn btn-primary" onClick={this.props.onView} >
                                 View
                             </Link>
                             {" "}

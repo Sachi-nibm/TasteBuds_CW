@@ -25,8 +25,8 @@ class Foods extends Component{
         )
     }
 
-    async componentDidMount() {
-        const { data } = await axios.get("http://localhost:4000/api/foods");
+    async componentDidMount(id) {
+        const { data } = await axios.get(`http://localhost:4000/api/foods/${id}`);
         let foods = data.map((food) => {
             return {
                 id : food._id,

@@ -18,7 +18,7 @@ function App() {
         <NavBar/>
             <Routes>
                 <Route path="/" element={<Outlets />} />
-                <Route path="/foods" element={<Foods />} />
+                <Route path="/foods/:id" element={<Foods />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/SignUp" element={<SignUp />} />
                 <Route path="/addoutlet" element={<AddOutlet />} />
