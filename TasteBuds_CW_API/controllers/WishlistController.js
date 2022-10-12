@@ -1,10 +1,10 @@
 const asyncHandler = require('express-async-handler')
 const User = require("../models/users");
 const Food  = require("../models/food");
-const Outlet  = require("../models/outlet");
+const Outlet  = require("../models/oultet");
 const wishlist = require("../models/wishlist");
 
- const getWishlist = asyncHandler(async(req,res) => {
+ const getWishlists = asyncHandler(async(req,res) => {
     try {
         let cart = await wishlist.findOne({user : req.params.id})
         if (!cart) {
@@ -21,7 +21,7 @@ const wishlist = require("../models/wishlist");
 });
 
 
-const newWishlist = asyncHandler(async(req,res) => {
+const newWishlists = asyncHandler(async(req,res) => {
     if( !req.body.user || !req.body.outletID){
         return res
             .status(400)
@@ -73,7 +73,7 @@ const newWishlist = asyncHandler(async(req,res) => {
     }
 });
 
-const deleteWishlist = asyncHandler(async(req,res) => {
+const deletWishlist = asyncHandler(async(req,res) => {
     let cart = await wishlist.findOne({user : req.params.id})
     try {
         cart = await wishlist.findOneAndUpdate(
@@ -95,6 +95,6 @@ const deleteWishlist = asyncHandler(async(req,res) => {
 
 module.exports = {
     getWishlists,
-    newWishlist,
-    deleteWishlist
+    newWishlists,
+    deletWishlist
 }

@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { getFoods,postFood,deleteFood } = require('../controllers/foodController')
 
-router.get('/', getFoods)
+router.get('/:id', getFoods)
 
 router.post('/', postFood)
 
