@@ -18,7 +18,7 @@ const signinUser = async(req,res) => {
                 name: user.name,
                 email: user.email,
                 isAdmin : user.isAdmin,
-                token : generateToken(user._id)
+                token : generateToken(user._id, user.email, user.isAdmin)
                 
         })
     }else {
@@ -29,9 +29,9 @@ const signinUser = async(req,res) => {
 }
 
 //Generate JWT
-const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_KEY, {
-        expiresIn : '30d',
+const generateToken = (id,email,isAdmin) => {
+    return jwt.sign({ id, email, isAdmin }, process.env.JWT_KEY, {
+        expiresIn : '1d',
     })
 }
 

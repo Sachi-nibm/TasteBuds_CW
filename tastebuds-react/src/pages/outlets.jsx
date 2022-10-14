@@ -41,7 +41,12 @@ class Outlets extends Component{
     }
 
     async deleteOutlet(id){
-        await axios.delete(`http://localhost:4000/api/outlets/${id}`)
+        await axios.delete(`http://localhost:4000/api/outlets/${id}`, {
+            headers : {
+                "x-jwt-token" : localStorage.getItem("token")
+            }
+        }
+        )
         let updatedOutlet = this.state.allOutlets.filter(outlet => outlet.id !== id)
         this.setState({allOutlets : updatedOutlet });
     }

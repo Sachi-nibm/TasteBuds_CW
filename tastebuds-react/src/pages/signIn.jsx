@@ -22,6 +22,7 @@ const SignIn =() =>{
             localStorage.setItem("isAdmin", (result.isAdmin));
             console.log('Admin status :',result.isAdmin)
             localStorage.setItem("login", true);
+            localStorage.setItem("token", result.token);
             navigate("/")
         } else {
             alert("Please enter correct credaintials")

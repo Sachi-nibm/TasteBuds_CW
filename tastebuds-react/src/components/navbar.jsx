@@ -16,7 +16,7 @@ const Navigation = () => {
                 <img src="https://www.houstonfood2u.com/images/logos/original-logos-500.png"
                     alt="" width="50" height="50" className="d-inline-block align-text-top"/>
                 <div className="container-fluid">
-                    <span class="navbar-brand mb-0 h1">TasteBuds</span>  
+                    <span className="navbar-brand mb-0 h1">TasteBuds</span>  
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -57,7 +57,7 @@ const Navigation = () => {
                 <img src="https://www.houstonfood2u.com/images/logos/original-logos-500.png"
                     alt="" width="50" height="50" className="d-inline-block align-text-top"/>
                 <div className="container-fluid">
-                    <span class="navbar-brand mb-0 h1">TasteBuds</span>   
+                    <span className="navbar-brand mb-0 h1">TasteBuds</span>   
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -92,7 +92,7 @@ const Navigation = () => {
                 <img src="https://www.houstonfood2u.com/images/logos/original-logos-500.png"
                     alt="" width="50" height="50" className="d-inline-block align-text-top"/>
                 <div className="container-fluid">
-                    <span class="navbar-brand mb-0 h1">Navbar</span>
+                    <span className="navbar-brand mb-0 h1">Navbar</span>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
