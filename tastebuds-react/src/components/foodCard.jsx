@@ -21,10 +21,9 @@ class FoodCard extends Component{
                     <br/>
                     <div className="container" style={{ padding : "0px"}}>
                         <div className="raw">
-                            <Link to="/foods" className="btn btn-primary" onClick={this.props.onView} >
-                                View
+                            <Link to="" className="btn btn-outline-primary" onClick={this.props.onView} >
+                                View more
                             </Link>
-                            {" "}
                             <button className="btn btn-danger" onClick={this.props.onDelete}>
                                 Delete
                             </button>
