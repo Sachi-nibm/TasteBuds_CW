@@ -74,7 +74,7 @@ class Orders extends Component {
       tot = tot + item.price;
       return {
         id: item._id,
-        productId: item.productId,
+        foodId: item.foodId,
         qty: item.qty,
         price: item.price,
         title: item.title,
@@ -89,7 +89,7 @@ class Orders extends Component {
 
   async deleteItem(id) {
     const user = localStorage.getItem("userId");
-    await axios.post(`api/orders/${id}/${user}`);
+    await axios.post(`http://localhost:4000/api/orders/${id}/${user}`);
     let updateditem = this.state.allitems.filter((item) => item.id !== id);
     this.setState({ allitems: updateditem });
     window.location.reload(false);

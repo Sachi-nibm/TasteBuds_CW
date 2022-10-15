@@ -18,6 +18,7 @@ class Foods extends Component{
                                 food= {food} 
                                 onDelete = {() => this.deleteFood(food.id)}
                                 onView = {() => this.viewFood(food.id)}
+                                onAddToCart = {() => this.AddFoodToCart(food.id)}
                             />
                         </div>
                     ))}
@@ -53,6 +54,22 @@ class Foods extends Component{
         let viewFood = this.state.allFoods.filter(food => food.id === id)
         this.setState({allFoods : viewFood });
     }
+    // Create By - Sachini Perera - 08/10/2022
+    async AddFoodToCart(food) {
+        await axios.post(`http://localhost:4000/api/orders`, {
+        user: localStorage.getItem("userId"),
+        id: food.id,
+        qty: 1,
+          })
+          .then((response) => {
+            console.log("Add to Cart");
+          })
+          .catch((error) => {
+            console.log("Error!", "An Error Occured when add to Cart!", "error");
+            alert("something is wrong");
+          });
+      }
+    
 }
 
 
