@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import { Link } from "react-router-dom";
+
 
 class FoodCard extends Component{
     render(){
         return(
-            <div className="card" style={{width: "20rem" ,height: "25rem" , marginTop:"20px"}}  >
+            <div className="card" style={{width: "20rem" ,height: "28rem" , marginTop:"20px"}}  >
                 <img 
                     style = {{ width:"100%", height : "15vw", objectFit: "cover"}}
                     src={this.props.food.picture}    
@@ -21,9 +21,9 @@ class FoodCard extends Component{
                     <br/>
                     <div className="container" style={{ padding : "0px"}}>
                         <div className="raw">
-                            <Link to="" className="btn btn-outline-primary" onClick={this.props.onView} >
+                            <button className="btn btn-outline-primary" onClick={this.props.onView} >
                                 View more
-                            </Link>
+                            </button> {"  "}
                             <button className="btn btn-danger" onClick={this.props.onDelete}>
                                 Delete
                             </button>

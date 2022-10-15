@@ -68,10 +68,19 @@ const deleteFood = asyncHandler(async(req,res) =>{
     }
 })
 
-
+const getFood = asyncHandler(async(req,res) => {
+    let requestedID = req.params.id;
+    let food = await Food.findById(requestedID); 
+    if(!food){
+        res.status(404)
+        throw new Error('Food you are looking for does not exist')
+    }
+    return res.status(200).json(food);
+})
 
 module.exports = {
     getFoods,
     postFood,
-    deleteFood
+    deleteFood,
+    getFood,
 }

@@ -17,6 +17,7 @@ class Foods extends Component{
                                 key={food.id} 
                                 food= {food} 
                                 onDelete = {() => this.deleteFood(food.id)}
+                                onView = {() => this.viewFood(food.id)}
                             />
                         </div>
                     ))}
@@ -45,6 +46,12 @@ class Foods extends Component{
         await axios.delete(`http://localhost:4000/api/foods${id}`)
         let updatedFoods = this.state.allFoods.filter(food => food.id !== id)
         this.setState({allFoods : updatedFoods });
+    }
+
+    async viewFood(id){
+        await axios.get(`http://localhost:4000/api/foods/${id}`)
+        let viewFood = this.state.allFoods.filter(food => food.id === id)
+        this.setState({allFoods : viewFood });
     }
 }
 
