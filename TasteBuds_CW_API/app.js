@@ -8,6 +8,7 @@ const { logger } = require('./middlewares/logger')
 const home = require('./routes/home');
 const Outlets = require('./routes/outlets')
 const Foods = require('./routes/foods')
+const OutletFoods = require('./routes/outletFoods')
 const user = require('./routes/users')
 const signin = require('./routes/signin')
 const order = require("./routes/orders")//Added by Sachini - 04/10/2022
@@ -29,6 +30,7 @@ app.use(express.urlencoded({extended : false}))
 app.use("/",home);
 app.use("/api/outlets", Outlets);
 app.use("/api/foods", Foods);
+app.use("/api/outletfoods", OutletFoods);
 app.use("/api/users", user);
 app.use("/api/signin", signin);
 app.use("/api/orders", order);//Added by Sachini - 04/10/2022
