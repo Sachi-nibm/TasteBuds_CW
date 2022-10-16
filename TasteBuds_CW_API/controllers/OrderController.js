@@ -25,8 +25,21 @@ const order = require("../models/order");
             .send({message : ex.message});
     }
 });
-
-//Function Name - getOrders
+const getAllOrders= asyncHandler(async(req,res) => {
+    try {
+      let cart = await order.find();
+      if (!cart) {
+        return res
+          .status(404)
+          .send({ meesage: "The cart you request does not exist" });
+      }
+      return res.send(cart);
+    } catch (ex) {
+      return res.status(500).send({ message: ex.message });
+    }
+  });
+  
+//Function Name - newOrder
 //Function Desc - Add order to cart
 const newOrder = asyncHandler(async(req,res) => {
     if( !req.body.user || !req.body.foodID){
@@ -111,6 +124,7 @@ const deletOrder = asyncHandler(async(req,res) => {
 
 module.exports = {
     getOrders,
+    getAllOrders,
     newOrder,
     deletOrder
 }

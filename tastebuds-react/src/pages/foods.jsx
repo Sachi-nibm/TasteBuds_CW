@@ -58,14 +58,14 @@ class Foods extends Component{
     async AddFoodToCart(food) {
         await axios.post(`http://localhost:4000/api/orders`, {
         user: localStorage.getItem("userId"),
-        id: food.id,
-        qty: 1,
+        foodID: food.foodID,
+        quntity: 1,
           })
           .then((response) => {
             console.log("Add to Cart");
           })
           .catch((error) => {
-            console.log("Error!", "An Error Occured when add to Cart!", "error");
+            console.log(error);
             alert("something is wrong");
           });
       }

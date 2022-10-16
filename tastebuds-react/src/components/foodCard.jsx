@@ -25,7 +25,7 @@ class FoodCard extends Component{
                                 View more
                             </button> {"  "}
                             <button className="btn btn-outline-primary" onClick={this.props.onAddToCart}>
-                                Add
+                                Add Cart
                             </button> {"  "}
                             <button className="btn btn-danger" onClick={this.props.onDelete}>
                                 Delete

@@ -11,7 +11,7 @@ const Foods = require('./routes/foods')
 const OutletFoods = require('./routes/outletFoods')
 const user = require('./routes/users')
 const signin = require('./routes/signin')
-const order = require("./routes/orders")//Added by Sachini - 04/10/2022
+const order = require('./routes/orders')//Added by Sachini - 04/10/2022
 const wishlist = require("./routes/wishlists")
 
 const PORT = process.env.PORT || 3000;
