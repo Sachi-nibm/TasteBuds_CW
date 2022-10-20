@@ -5,10 +5,7 @@ class OutletCard extends Component{
     render(){
         return(
             <div className="card" style={{width: "20rem" ,height: "28rem" , marginTop:"20px"}}  >
-                <img 
-                    style = {{height : "15rem"}}
-                    src={this.props.outlet.picture}    
-                    className="card-img-top" 
+                <img style = {{height : "15rem"}} src={this.props.outlet.picture} className="card-img-top" 
                     alt="..."
                 />
                 <div className="card-body" style={{ padding : "10px"}}>

@@ -12,7 +12,7 @@ const Navigation = () => {
     }
     if ("true" === localStorage.getItem("isAdmin") ){
         return(
-            <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <img src="https://www.houstonfood2u.com/images/logos/original-logos-500.png"
                     alt="" width="50" height="50" className="d-inline-block align-text-top"/>
                 <div className="container-fluid">
@@ -53,7 +53,7 @@ const Navigation = () => {
         )
     }else if("true" === localStorage.getItem('login') ){
         return(
-            <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <img src="https://www.houstonfood2u.com/images/logos/original-logos-500.png"
                     alt="" width="50" height="50" className="d-inline-block align-text-top"/>
                 <div className="container-fluid">
