@@ -13,14 +13,11 @@ class Order extends Component {
             className="img-fluid"
             style={{ width: "5rem" }}
             src={this.props.item.imagePath}
+            alt =""
           />
         </td>
         <td>{this.props.item.title}</td>
-        <td>
-          <a href="#" class="border">
-            {this.props.item.qty}
-          </a>
-        </td>
+        <td>{this.props.item.quntity}</td>
         <td>
           Rs. {this.props.item.price} <span className="close"></span>
         </td>

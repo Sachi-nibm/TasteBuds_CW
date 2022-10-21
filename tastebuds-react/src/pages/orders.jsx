@@ -36,17 +36,17 @@ class Orders extends Component {
           </table>
           <form className="text">
             <div className="row mb-3">
-              <label for="input" class="col-sm-3 col-form-label">
+              <label htmlFor="input" class="col-sm-3 col-form-label">
                 Total Amount -
               </label>
               <div className="col text-right"></div>
-              <p for="input" class="col-sm-2 col-form-label">
+              <p htmlFor="input" class="col-sm-2 col-form-label">
                 Rs. {this.state.total}
               </p>
             </div>
           </form>
           <br></br>
-          <div>
+          {/* <div>
             <button
               className="btn btn-outline-success"
               onClick={() => {
@@ -56,29 +56,28 @@ class Orders extends Component {
               Check Out
             </button>
           </div>
-          <br></br>
+          <br></br> */}
         </div>
       </div>
     );
   }
-  async handleSubmit(event) {
+ /*  async handleSubmit(event) {
     event.preventDefault();
     const user = localStorage.getItem("userId");
     this.props.history.push("/change-shipping");
-  }
+  } */
   async componentDidMount() {
     const id = localStorage.getItem("userId");
-    const { data } = await axios.get(`api/orders/items/${id}`);
+    const { data } = await axios.get(`http://localhost:4000/api/orders/${id}`);
     let tot = 0;
     let items = data.map((item) => {
       tot = tot + item.price;
-      return {
-        id: item._id,
-        foodId: item.foodId,
-        qty: item.qty,
-        price: item.price,
-        title: item.title,
-        productCode: item.productCode,
+      return{	
+        id :  item.id,	
+        foodID: item.foodID,	
+        quntity: item.quntity,	
+        price: item.price,	
+        title: item.title,	
         imagePath: item.imagePath,
       };
     });
@@ -88,11 +87,14 @@ class Orders extends Component {
   }
 
   async deleteItem(id) {
-    const user = localStorage.getItem("userId");
-    await axios.post(`http://localhost:4000/api/orders/${id}/${user}`);
-    let updateditem = this.state.allitems.filter((item) => item.id !== id);
-    this.setState({ allitems: updateditem });
-    window.location.reload(false);
+    //const user = localStorage.getItem("userId");
+    //await axios.post(`http://localhost:4000/api/orders/${id}/${user}`);
+    //let updateditem = this.state.allitems.filter((item) => item.id !== id);
+    //this.setState({ allitems: updateditem });
+    //window.location.reload(false);
+      await axios.delete(`http://localhost:4000/api/orders/${id}`);	
+      let updatedItem = this.state.allitems.filter(item => item.id !== id);	
+      this.setState({ allitems: updatedItem });
   }
 }
 

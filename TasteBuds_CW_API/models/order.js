@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-    Items : [{
         foodID : {
             type : mongoose.Schema.Types.ObjectId,
             require : true,
@@ -21,29 +20,30 @@ const orderSchema = new mongoose.Schema({
         imagePath: {
             type: String,
         },
-    }],
-    totalQty: {
+        totalQty: {
         type: Number,
         default: 0,
         required: true,
-      },
-
-      totalCost: {
+        },
+        totalCost: {
         type: Number,
         default: 0,
         required: true,
-      },
+        },
+        title: {
+            type: String,
+            required: true,
+        },
+        user : {
+            type : mongoose.Schema.Types.ObjectId,
+            require : true,
+            ref : 'User',
+        },
 
-      user : {
-        type : mongoose.Schema.Types.ObjectId,
-        require : true,
-        ref : 'User',
-    },
-
-      createdDate: {
-        type : Date,
-        default : Date.now
-    },
+        createdDate: {
+            type : Date,
+            default : Date.now
+        },
 });
 
 module.exports = mongoose.model("Order",orderSchema);

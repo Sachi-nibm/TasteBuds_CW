@@ -55,19 +55,20 @@ class Foods extends Component{
         this.setState({allFoods : viewFood });
     }
     // Create By - Sachini Perera - 08/10/2022
-    async AddFoodToCart(food) {
+    async AddFoodToCart(id) {
         await axios.post(`http://localhost:4000/api/orders`, {
-        user: localStorage.getItem("userId"),
-        foodID: food.foodID,
-        quntity: 1,
-          })
-          .then((response) => {
-            console.log("Add to Cart");
-          })
-          .catch((error) => {
-            console.log(error);
-            alert("something is wrong");
-          });
+            userID : localStorage.getItem("userId"),
+            foodID: id,
+            quntity: "1"
+              })
+              .then((response) => {
+                console.log("Add to Cart");
+                alert("Added to the Cart");
+              })
+              .catch((error) => {
+                console.log(error);
+                alert("something is wrong");
+              });
       }
     
 }

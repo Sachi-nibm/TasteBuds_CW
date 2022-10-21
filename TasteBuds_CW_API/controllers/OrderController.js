@@ -12,7 +12,7 @@ const order = require("../models/order");
 //Function Desc - View Order
  const getOrders = asyncHandler(async(req,res) => {
     try {
-        let cart = await order.findOne({user : req.params.id})
+        let cart = await order.find({user : req.params.id})
         if (!cart) {
             return res
                 .status(404)
@@ -41,69 +41,41 @@ const getAllOrders= asyncHandler(async(req,res) => {
   
 //Function Name - newOrder
 //Function Desc - Add order to cart
-const newOrder = asyncHandler(async(req,res) => {
-    if( !req.body.user || !req.body.foodID){
-        return res
-            .status(400)
-            .send("To continue the process please login...!")
+const newOrder = asyncHandler(async (req, res) => {
+    let userID = req.body.userID
+    let foodID = req.body.foodID
+    let quntity = req.body.quntity
+    console.log(userID, foodID)
+
+    if (!userID || !foodID) {
+        return res.status(400).send("Please send the all values");
     }
 
-    let cart = await User.findOne({user : req.body.user})
-    if(!cart){
-        let food = await Food.findOne({_id : req.body.foodID })
+    let cart = await order.findOne({ user: userID })
+    console.log(cart)
+    let food = await Food.findOne({ _id: foodID })
+        console.log("food")
         let newOrder = new order({
-            foodID : req.body.foodID,
-            quntity : req.body.quntity,
-            price : food.price,
-            imagePath : food.imagePath,
-            totalQty : req.body.quntity,
-            totalCost : food.price * food.price,
-            user : req.body.user
-        });
-        try{
-            cart = await newOrder.save();
-            return res
-                .status(200)
-                .send(cart);
-        }catch(ex){
-            return res
-                .status(500)
-                .send(err.message);
-        }
-    } else {
-        let item = await order.findOne({"Items.foodID" : req.body.foodID}, {user : req.body.user});
-        let cart = await order.findOne({user : req.body.foodID});
-        let food = await Food.findOne({_id : req.body.foodID }); 
-
-        let newItem = {
-            foodID : req.body.foodID,
-            quntity : req.body.quntity,
-            price : food.price,
-            imagePath : food.imagePath,
-        }
-
-        cart.Items.push(newItem);
-        cart.set({
-            totalQty : cart.totalQty + req.body.qty,
-            totalCost : cart.totalCost + product.price * req.body.qty,
-            user: req.body.user
+            foodID: foodID,
+            title : food.name,
+            quntity: quntity,
+            price: food.price,
+            imagePath: food.picture,
+            totalQty: quntity,
+            totalCost: food.price * quntity,
+            user: userID
         })
         try {
-            cart = await cart.update(cart);
-              return res
-                .status(200)
-                .send(cart);
+            cart = await newOrder.save();
+            return res.send(cart);
         } catch (err) {
-            return res
-                .status(500)
-                .send(err.message);
+            return res.status(500).send(err.message);
         }
-    }
 });
 //Function Name - deletOrder
 //Function Desc - Delete order from cart
 const deletOrder = asyncHandler(async(req,res) => {
-    let cart = await order.findOne({user : req.params.id})
+    /* let cart = await order.findOne({user : req.params.id})
     try {
         cart = await order.findOneAndUpdate(
           { user: req.params.user },
@@ -114,8 +86,16 @@ const deletOrder = asyncHandler(async(req,res) => {
           return res
             .status(404)
             .send("The Item you request to delete,not found");
-        return res.send(cart);
+        return res.send(cart); */
+        let cart = await order.findOneAndDelete({_id : req.params.id})	
+        try {	
+            if (!cart)	
+              return res	
+                .status(404)	
+                .send("The Item you request to delete,not found");	
+            return res.status(200).send(cart);
       } catch (err) {
+        console.log(err)	
             return res
                 .status(500)
                 .send(err.message);
