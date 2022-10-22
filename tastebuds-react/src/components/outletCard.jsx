@@ -22,6 +22,9 @@ class OutletCard extends Component{
                             <Link to="/foods" className="btn btn-primary">
                                 View Foods 
                             </Link>{"  "}
+                            <button className="btn btn-success" onClick={this.props.onWishlist}>
+                                Favorite
+                            </button>{"  "}
                             <button className="btn btn-danger" onClick={this.props.onDelete}>
                                 Delete
                             </button>
