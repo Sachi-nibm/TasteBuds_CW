@@ -44,7 +44,12 @@ class Foods extends Component{
     }
 
     async deleteFood(id){
-        await axios.delete(`http://localhost:4000/api/foods${id}`)
+        await axios.delete(`http://localhost:4000/api/outlets/${id}`, {
+            headers : {
+                "x-jwt-token" : localStorage.getItem("token")
+            }
+        }
+        )
         let updatedFoods = this.state.allFoods.filter(food => food.id !== id)
         this.setState({allFoods : updatedFoods });
     }

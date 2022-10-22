@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const Food = require('../models/food')
 const Outlet = require('../models/oultet')
+const jwt = require("jsonwebtoken");
 
 // @desc     Get Foods (Alternative)
 // @route    GET /api/foods
@@ -36,21 +37,42 @@ const postFood = asyncHandler (async(req,res)=>{
 // @desc     DELETE Food
 // @route    DELETE /api/foods/id
 const deleteFood = asyncHandler(async(req,res) =>{
-    let requestedID = req.params.id;
-    let foodID = await Food.find({"foodID":requestedID});
+    const token = req.header("x-jwt-token");
+    if(!token){
+        console.log("Access Denide. No Token")
+        return res
+            //.status(401)
+            .send({message :"Access Denide. No Token"})
+    }
     try{
-        let food = await Food.findByIdAndDelete(foodID);
+        jwt.verify(token, process.env.JWT_KEY)
+    }catch(e){
+        return res
+            //.status(400)
+            .send(e)
+    }
+
+    let decoded = jwt.decode(token, process.env.JWT_KEY);
+    if(!decoded.isAdmin){
+        console.log("Forbidden - No Authorizations")
+        return res
+        //.status(403)
+        .send({message :"Forbidden - No Authorizations"})
+    }    
+
+    try{
+        let requestedID = req.params.id;
+        let food = await Food.findByIdAndDelete(requestedID);
         if(!food){
             return res
-                //.status(404)
                 .send("Food you are looking for does not exist")
         }
-        res.send(outlet);
+        res.json(Food);
     } catch(ex){
         return res
-            //.status(500)
             .send("Error : ", ex);
     }
+    
 })
 
 const getFood = asyncHandler(async(req,res) => {
