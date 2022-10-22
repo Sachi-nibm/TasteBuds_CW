@@ -17,9 +17,10 @@ class Outlets extends Component{
                                 key={outlet.id} 
                                 outlet= {outlet} 
                                 onDelete = {() => this.deleteOutlet(outlet.id)}
+                                onWishlist = {() => this.AddToWishlist(outlet.id)}
                             />
                         </div>
-                    ))}
+                    ))} 
                 </div> 
             </div>
         )
@@ -50,6 +51,19 @@ class Outlets extends Component{
         let updatedOutlet = this.state.allOutlets.filter(outlet => outlet.id !== id)
         this.setState({allOutlets : updatedOutlet });
     }
+    async AddToWishlist(id) {
+        await axios.post(`http://localhost:4000/api/wishlists`, {
+            userID : localStorage.getItem("userId"),
+            outletID: id,
+              })
+              .then((response) => {
+                alert("Added to the Wishlist");
+              })
+              .catch((error) => {
+                console.log(error);
+                alert("something is wrong");
+              });
+      }
 }
 
 export default Outlets
