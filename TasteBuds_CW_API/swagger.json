@@ -1,0 +1,150 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "TasteBuds Project CRUD(Create (POST), Read (GET), update (PUT), and delete (Delete)",
+      "description": "Tastebuds Project Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:4000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Project CRUD",
+        "description": "API for details in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+        "/api/users": {
+            "get": {
+              "tags": ["Users"],
+              "summary": "Get all users in TasteBuds application",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Users"
+                  }
+                }
+              }
+            },
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create new user for TasteBuds application",
+                "parameters": [
+                  {
+                    "name": "name",
+                    "in": "header",
+                    "description": "User name",
+                    "schema": {
+                      "$ref": "#/definitions/User"
+                    }
+                  },
+                  {
+                    "name": "email",
+                    "in": "header",
+                    "description": "User email",
+                    "schema": {
+                      "$ref": "#/definitions/User"
+                    }
+                  },
+                  {
+                    "name": "password",
+                    "in": "header",
+                    "description": "User password",
+                    "schema": {
+                      "$ref": "#/definitions/User"
+                    }
+                  },
+                  {
+                      "name": "isAdmin",
+                      "in": "header",
+                      "description": "User isAdmin",
+                      "schema": {
+                        "$ref": "#/definitions/User"
+                      }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                  "200": {
+                    "description": "New user is created",
+                    "schema": {
+                      "$ref": "#/definitions/User"
+                    }
+                  }
+                }
+              }
+          },
+          "/api/users/{id}": {
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of user that we want to find",
+                "type": "string"
+              }
+            ],
+            "delete": {
+                "tags": ["Users"],
+                "summary": "Delete users in TasteBuds application",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Successfully deleted the user."
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                }
+              }
+          }
+        },
+      
+        "definitions": {
+          "User": {
+            "required": ["name","email","password"],
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+              ,
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "typ,e": "string"
+              },
+              "isAdmin": {
+                "typ,e": "string"
+              }
+            }
+          },
+          "Users": {
+            "type": "array",
+            "$ref": "#/definitions/User"
+          }
+        }
+  }
+
+  

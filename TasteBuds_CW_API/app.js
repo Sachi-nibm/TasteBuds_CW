@@ -13,7 +13,8 @@ const user = require('./routes/users')
 const signin = require('./routes/signin')
 const order = require('./routes/orders')//Added by Sachini - 04/10/2022
 const wishlist = require("./routes/wishlists")
-
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');//Added by Sachini - 15/10/2022
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -37,7 +38,11 @@ app.use("/api/orders", order);//Added by Sachini - 04/10/2022
 app.use("/api/wishlists", wishlist);
 
 app.use(errorHandler)
-
+app.use(
+    '/api-docs',
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocument)
+  );
 app.listen(PORT, () => {
     console.log(`Strated listening on port : ${PORT}`);
 });
