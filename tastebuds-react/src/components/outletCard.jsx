@@ -12,15 +12,16 @@ class OutletCard extends Component{
                     <h5 className="card-title">{this.props.outlet.name}</h5>
                         Adress : {this.props.outlet.address}
                         <br/>
-                        Loaction : 
-                        <br/>
                         Rating : {this.props.outlet.rating}
                     <br/>
                     <br/>
                     <div className="container" style={{ padding : "0px"}}>
                         <div className="raw">
+                            <Link to={`/foodview/${this.props.outlet.id}`}  className="btn btn-outline-primary">
+                                View
+                            </Link>{" "}
                             <Link to="/foods" className="btn btn-primary">
-                                View Foods 
+                                Buy 
                             </Link>{"  "}
                             <button className="btn btn-success" onClick={this.props.onWishlist}>
                                 Favorite

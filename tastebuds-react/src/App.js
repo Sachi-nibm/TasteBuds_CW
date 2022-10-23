@@ -1,5 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Outlets from './pages/outlets';
+import FoodDetails from './components/foodView';
 import Foods from './pages/foods';
 import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
@@ -20,6 +21,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Outlets />} />
                     <Route path="/foods" element={<Foods />} />
+                    <Route path="/foodview/:id" element={<FoodDetails />} />
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/SignUp" element={<SignUp />} />
                     <Route path="/addoutlet" element={<AddOutlet />} />
