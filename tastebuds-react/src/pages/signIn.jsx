@@ -31,7 +31,7 @@ const SignIn =() =>{
     }
 
     return(
-        <div className='login' style={{marginLeft : "30%" , marginTop : "100px"}}>
+        <div className='login' style={{marginLeft : "30%" , marginTop : "100px", paddingBottom: "75px" }}>
             <h1>Login</h1>
             <input type="text" placeholder='Enter Email Here' 
                 style={{padding : "7px", display : "block", border : "solid 1px", width : "300px", margin : "20px"}}

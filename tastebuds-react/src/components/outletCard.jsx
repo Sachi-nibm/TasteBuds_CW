@@ -15,22 +15,19 @@ class OutletCard extends Component{
                         Rating : {this.props.outlet.rating}
                     <br/>
                     <br/>
-                    <div className="container" style={{ padding : "0px"}}>
+                    <div className="container" >
                         <div className="raw">
-                            <Link to={`/foodview/${this.props.outlet.id}`}  className="btn btn-outline-primary">
+                            <Link to={`/foodview/${this.props.outlet.id}`}  className="btn btn-primary" 
+                            style={{width: "85px",marginLeft : "5px"}}>
                                 View
                             </Link>{" "}
-                            <Link to="/foods" className="btn btn-primary">
+                            <Link to="/foods" className="btn btn-success" style={{width: "85px"}}>
                                 Buy 
                             </Link>{"  "}
-                            <button className="btn btn-success" onClick={this.props.onWishlist}>
+                            <button className="btn btn-secondary" onClick={this.props.onWishlist} style={{width: "85px"}}>
                                 Favorite
-                            </button>{"  "}
-                            <button className="btn btn-danger" onClick={this.props.onDelete}>
-                                Delete
                             </button>
-                        </div>
-                        
+                        </div>   
                     </div>   
                 </div>
             </div>
