@@ -46,7 +46,7 @@
                 "parameters": [
                   {
                     "name": "name",
-                    "in": "header",
+                    "in": "body",
                     "description": "User name",
                     "schema": {
                       "$ref": "#/definitions/User"
@@ -54,7 +54,7 @@
                   },
                   {
                     "name": "email",
-                    "in": "header",
+                    "in": "body",
                     "description": "User email",
                     "schema": {
                       "$ref": "#/definitions/User"
@@ -62,20 +62,12 @@
                   },
                   {
                     "name": "password",
-                    "in": "header",
+                    "in": "body",
                     "description": "User password",
                     "schema": {
                       "$ref": "#/definitions/User"
                     }
-                  },
-                  {
-                      "name": "isAdmin",
-                      "in": "header",
-                      "description": "User isAdmin",
-                      "schema": {
-                        "$ref": "#/definitions/User"
-                      }
-                    }
+                  }
                 ],
                 "produces": ["application/json"],
                 "responses": {
@@ -133,9 +125,6 @@
                 "type": "string"
               },
               "password": {
-                "typ,e": "string"
-              },
-              "isAdmin": {
                 "typ,e": "string"
               }
             }

@@ -87,14 +87,10 @@ class Orders extends Component {
   }
 
   async deleteItem(id) {
-    //const user = localStorage.getItem("userId");
-    //await axios.post(`http://localhost:4000/api/orders/${id}/${user}`);
-    //let updateditem = this.state.allitems.filter((item) => item.id !== id);
-    //this.setState({ allitems: updateditem });
-    //window.location.reload(false);
       await axios.delete(`http://localhost:4000/api/orders/${id}`);	
       let updatedItem = this.state.allitems.filter(item => item.id !== id);	
       this.setState({ allitems: updatedItem });
+      window.location.reload(false);
   }
 }
 
