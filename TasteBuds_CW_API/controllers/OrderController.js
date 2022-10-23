@@ -75,20 +75,10 @@ const newOrder = asyncHandler(async (req, res) => {
 //Function Name - deletOrder
 //Function Desc - Delete order from cart
 const deletOrder = asyncHandler(async(req,res) => {
-    /* let cart = await order.findOne({user : req.params.id})
-    try {
-        cart = await order.findOneAndUpdate(
-          { user: req.params.user },
-          { $pull: { items: { _id: req.params.id } } }
-        );
-        cart.Items.pull({ _id: req.params.id });
-        if (!cart)
-          return res
-            .status(404)
-            .send("The Item you request to delete,not found");
-        return res.send(cart); */
-        let cart = await order.findOneAndDelete({_id : req.params.id})	
         try {	
+          let cart = await order.findOneAndDelete(
+            { $pull: { items: { _id: req.params.id }}});	
+
             if (!cart)	
               return res	
                 .status(404)	
