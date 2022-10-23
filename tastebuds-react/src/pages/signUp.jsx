@@ -28,7 +28,7 @@ const Signup= () => {
     }
 
     return(
-      <div className='login' style={{marginLeft : "30%" , marginTop : "100px"}}>
+      <div className='login' style={{marginLeft : "30%" , marginTop : "50px", paddingBottom: "65px" }}>
             <h1>Registration</h1>
             <input type="text" placeholder='Enter Name Here' 
                 style={{padding : "7px", display : "block", border : "solid 1px", width : "300px", margin : "20px"}}

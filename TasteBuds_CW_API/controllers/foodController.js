@@ -62,12 +62,13 @@ const deleteFood = asyncHandler(async(req,res) =>{
 
     try{
         let requestedID = req.params.id;
-        let food = await Food.findByIdAndDelete(requestedID);
+        let food = await Food.findById(requestedID);
         if(!food){
             return res
                 .send("Food you are looking for does not exist")
         }
-        res.json(Food);
+        await food.remove()
+        res.json(food);
     } catch(ex){
         return res
             .send("Error : ", ex);

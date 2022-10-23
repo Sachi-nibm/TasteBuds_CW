@@ -11,6 +11,9 @@ import AddFood from './pages/createFood';
 import Orders from './pages/orders';//Added by Sachini - 09/10/2022
 import Customers from './pages/customer'
 import Wishlists from './pages/wishlists';
+import AdminOutlet from './pages/adminOutlets';
+import AdminOutletInfo from  './pages/viewOutlet'
+import UpdateOutlet from './pages/updateOutlet'
 
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
             <NavBar/>
                 <Routes>
                     <Route path="/" element={<Outlets />} />
+                    <Route path="/outlets" element={<AdminOutlet />} />
+                    <Route path="/outlets/:id" element={<AdminOutletInfo />} />
+                    <Route path="/updateoutlets/:id" element={<UpdateOutlet />} />
                     <Route path="/foods" element={<Foods />} />
                     <Route path="/foodview/:id" element={<FoodDetails />} />
                     <Route path="/signin" element={<SignIn />} />

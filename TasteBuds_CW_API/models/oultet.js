@@ -4,7 +4,6 @@ const outletSchema = new mongoose.Schema({
     outletID : {
         type : Number ,
         require : true,
-
     },
 
     name : {
@@ -29,6 +28,11 @@ const outletSchema = new mongoose.Schema({
     picture : {
         type: String,
         required: true
+    },
+
+    isActive : {
+        type : Boolean,
+        default : true
     }
 }, {
     timestamps : true

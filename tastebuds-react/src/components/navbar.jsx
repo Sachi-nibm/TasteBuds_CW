@@ -23,7 +23,7 @@ const Navigation = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link to ="/" className="nav-link active" aria-current="page">Outlet</Link>
+                                <Link to ="/outlets" className="nav-link active" aria-current="page">Outlet</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to ="/foods" className="nav-link active" aria-current="page">Food</Link>
@@ -36,12 +36,6 @@ const Navigation = () => {
                             </li>
                             <li className="nav-item">
                                 <Link to ="/users" className="nav-link active" aria-current="page">Users</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to ="/orders" className="nav-link active" aria-current="page">Order</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to ="/wishlists" className="nav-link active" aria-current="page">Favorite</Link>
                             </li>
                         </ul>
                         <div className="float-end">
