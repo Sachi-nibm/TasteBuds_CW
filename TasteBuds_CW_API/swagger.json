@@ -33,7 +33,7 @@
               "summary": "Get all users details in TasteBuds application",
               "responses": {
                 "200": {
-                  "description": "OK (All user Details).",
+                  "description": "OK (All user details).",
                   "schema": {
                     "$ref": "#/definitions/User"
                   }
@@ -50,7 +50,7 @@
                   {
                     "name": "User Register",
                     "in": "body",
-                    "description": "User Register Details",
+                    "description": "User register details",
                     "schema": {
                       "$ref": "#/definitions/User"
                     }
@@ -121,13 +121,213 @@
                 }
               }
           }
-          , "/api/orders": {
+          , "/api/outlets": {
+            "get": {
+              "tags": ["Outlet Details"],
+              "summary": "Get all outlet details in TasteBuds application",
+              "responses": {
+                "200": {
+                  "description": "OK (All outlet details).",
+                  "schema": {
+                    "$ref": "#/definitions/Outlet"
+                  }
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
+            "post": {
+              "tags": ["Outlet Details"],
+              "summary": "Create new outlet for TasteBuds application",
+              "parameters": [
+                {
+                  "name": "Outlet insert",
+                  "in": "body",
+                  "description": "Outlet insert details",
+                  "schema": {
+                    "$ref": "#/definitions/Outlet"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "OK (Successfully insert the outlet).",
+                  "schema": {
+                    "$ref": "#/definitions/Outlet"
+                  }
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            }
+          },
+          "/api/outlets/{id}": {
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of outlet that we want to find",
+                "type": "string"
+              }
+            ],
+            "get": {
+              "tags": ["Outlet Details"],
+              "summary": "Get outlet details in TasteBuds application",
+              "parameters": [
+                {
+                  "name": "userid",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                },
+                {
+                  "name": "userid",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "OK (Order details)."
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
+            "delete": {
+                "tags": ["Outlet Details"],
+                "summary": "Delete outlet in TasteBuds application",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "OK (Successfully deleted the outlet)."
+                  },
+                  "500": {
+                    "description": "ERROR"
+                  }
+                }
+              }
+          },
+           "/api/foods": {
+            "get": {
+              "tags": ["Food Details"],
+              "summary": "Get all food details in TasteBuds application",
+              "responses": {
+                "200": {
+                  "description": "OK (All food details).",
+                  "schema": {
+                    "$ref": "#/definitions/Order"
+                  }
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
+            "post": {
+              "tags": ["Food Details"],
+              "summary": "Create new food for TasteBuds application",
+              "parameters": [
+                {
+                  "name": "Food insert",
+                  "in": "body",
+                  "description": "Food insert details",
+                  "schema": {
+                    "$ref": "#/definitions/Food"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "OK (Successfully insert the user).",
+                  "schema": {
+                    "$ref": "#/definitions/Food"
+                  }
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            }
+          },
+          "/api/foods/{id}": {
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of food that we want to find",
+                "type": "string"
+              }
+            ],
+            "get": {
+              "tags": ["Food Details"],
+              "summary": "Get food details in TasteBuds application",
+              "parameters": [
+                {
+                  "name": "userid",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                },
+                {
+                  "name": "userid",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "OK (Food details)."
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
+            "delete": {
+                "tags": ["Food Details"],
+                "summary": "Delete food in TasteBuds application",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "OK (Successfully deleted the food)."
+                  },
+                  "500": {
+                    "description": "ERROR"
+                  }
+                }
+              }
+          },
+          "/api/orders": {
             "get": {
               "tags": ["Order Details"],
               "summary": "Get all Order details in TasteBuds application",
               "responses": {
                 "200": {
-                  "description": "OK (All Order Details).",
+                  "description": "OK (All Order details).",
                   "schema": {
                     "$ref": "#/definitions/Order"
                   }
@@ -142,9 +342,9 @@
               "summary": "Create new order for TasteBuds application",
               "parameters": [
                 {
-                  "name": "Order Insert",
+                  "name": "Order insert",
                   "in": "body",
-                  "description": "Order Insert Details",
+                  "description": "Order insert details",
                   "schema": {
                     "$ref": "#/definitions/Order"
                   }
@@ -179,7 +379,13 @@
               "summary": "Get Order details in TasteBuds application",
               "parameters": [
                 {
-                  "name": "id",
+                  "name": "userid",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                },
+                {
+                  "name": "userid",
                   "in": "path",
                   "required": true,
                   "type": "string"
@@ -214,6 +420,106 @@
                   }
                 }
               }
+          },
+          "/api/wishlists": {
+            "get": {
+              "tags": ["Wishlists Details"],
+              "summary": "Get all wishlists details in TasteBuds application",
+              "responses": {
+                "200": {
+                  "description": "OK (All wishlists details).",
+                  "schema": {
+                    "$ref": "#/definitions/Order"
+                  }
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
+            "post": {
+              "tags": ["Wishlists Details"],
+              "summary": "Create new wishlists for TasteBuds application",
+              "parameters": [
+                {
+                  "name": "Wishlists insert",
+                  "in": "body",
+                  "description": "Wishlists insert details",
+                  "schema": {
+                    "$ref": "#/definitions/wishlists"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "OK (Successfully insert the wishlists).",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            }
+          },
+          "/api/wishlists/{id}": {
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of Order that we want to find",
+                "type": "string"
+              }
+            ],
+            "get": {
+              "tags": ["Wishlists Details"],
+              "summary": "Get wishlists details in TasteBuds application",
+              "parameters": [
+                {
+                  "name": "userid",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                },
+                {
+                  "name": "userid",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "OK (Order details)."
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
+            "delete": {
+                "tags": ["Wishlists Details"],
+                "summary": "Delete wishlists in TasteBuds application",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "OK (Successfully deleted the wishlists)."
+                  },
+                  "500": {
+                    "description": "ERROR"
+                  }
+                }
+              }
           }
         },
       
@@ -233,17 +539,61 @@
               }
             }
           },
-          "Order": {
-            "required": ["foodID","quantity","title"],
+          "Outlet": {
+            "required": ["outletID","name","address","picture"],
             "properties": {
+              "outletID": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "picture": {
+                "type": "string"
+              }
+            }
+          },
+          "Food": {
+            "required": ["outletID","name","price","description","picture"],
+            "properties": {
+              "outletID": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              },
+              "description": {
+                "type": "number"
+              },
+              "picture": {
+                "type": "string"
+              }
+            }
+          },
+          "Order": {
+            "required": ["user","foodID"],
+            "properties": {
+              "userID": {
+                "type": "string"
+              },
               "foodID": {
                 "type": "string"
               }
-              ,
-              "quantity": {
-                "type": "Number"
+            }
+          },
+          "Wishlist": {
+            "required": ["user","itemID"],
+            "properties": {
+              "userID": {
+                "type": "string"
               },
-              "title": {
+              "itemID": {
                 "type": "string"
               }
             }
