@@ -62,8 +62,8 @@ const AddOutlet = () => {
                 style={{ padding: "7px", display: "block", border: "solid 1px", width: "300px", margin: "20px" }}
                 onChange={(e) => setRating(e.target.value)} value={rating}
             />
-            <button onClick={addOutlet} type="button"
-                style={{ margin: "20px", width: "150px", padding: "10px", backgroundColor: "skyblue", border: "solid 1px", cursor: "pointer" }}>
+            <button className="btn btn-outline-primary" onClick={addOutlet} type="button"
+                style={{ margin: "20px", width: "150px", padding: "10px",  border: "solid 1px", cursor: "pointer" }}>
                 Add Outlet
             </button>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
 const AddFood = () => {
-    const [outletId, setOutletID] = React.useState('');
+    const [outletID, setOutletID] = React.useState('');
     const [name, setName] = React.useState('');
     const [price, setPrice] = React.useState('');
     const [description, setdescription] = React.useState('');
@@ -10,8 +10,8 @@ const AddFood = () => {
 
     const addFood = async () => {
         try {
-            //console.log(outletId,name,price,descrip,picture,rating)
-        if (!outletId || !name || !price || !description || !picture) {
+            //console.log(outletID,name,price,descrip,picture,rating)
+        if (!outletID || !name || !price || !description || !picture) {
             alert("Error : Please fill the all required Fileds");
         } else 
         if (name.length < 3 || description.length < 5) {
@@ -19,7 +19,7 @@ const AddFood = () => {
         } else {
             let result = await fetch("http://localhost:4000/api/foods", {
                 method: 'post',
-                body: JSON.stringify({ outletId, name, price, description, rating, picture }),
+                body: JSON.stringify({ outletID, name, price, description, rating, picture }),
                 headers: {
                     'content-Type': 'application/json'
                 }
@@ -44,7 +44,7 @@ const AddFood = () => {
             <h1>Add Food</h1>
             <input type="text" placeholder='Enter Outlet ID'
                 style={{ padding: "7px", display: "block", border: "solid 1px", width: "300px", margin: "20px" }}
-                onChange={(e) => setOutletID(e.target.value)} value={outletId}
+                onChange={(e) => setOutletID(e.target.value)} value={outletID}
             />
             <input type="text" placeholder='Enter Food Name'
                 style={{ padding: "7px", display: "block", border: "solid 1px", width: "300px", margin: "20px" }}
@@ -66,8 +66,8 @@ const AddFood = () => {
                 style={{ padding: "7px", display: "block", border: "solid 1px", width: "300px", margin: "20px" }}
                 onChange={(e) => setRating(e.target.value)} value={rating}
             />
-            <button onClick={addFood} type="button"
-                style={{ margin: "20px", width: "150px", padding: "10px", backgroundColor: "skyblue", border: "solid 1px", cursor: "pointer" }}>
+            <button className="btn btn-outline-primary" onClick={addFood} type="button"
+                style={{ margin: "20px", width: "150px", padding: "10px", border: "solid 1px", cursor: "pointer" }}>
                 Add Food
             </button>
         </div>

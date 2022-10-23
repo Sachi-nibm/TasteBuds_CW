@@ -9,6 +9,7 @@ class Customer extends Component {
     render() {
         return (
             <div className="container">
+                <h1 style={{ marginLeft: "10%", marginTop: "50px" }}>Registerd User Details</h1>
                 <div className="row">
                     {this.state.allCustomers.map((customer) => (
                         <div key={customer.id} className="col">

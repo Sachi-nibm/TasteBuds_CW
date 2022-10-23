@@ -41,8 +41,8 @@ const SignIn =() =>{
                 style={{padding : "7px", display : "block", border : "solid 1px", width : "300px", margin : "20px"}}
                 onChange={(e) => setPassword(e.target.value)} value = {password}
             />
-            <button onClick={handleLogin} type="button" 
-                style={{margin : "20px", width : "150px", padding : "10px", backgroundColor: "skyblue", border: "solid 1px", cursor: "pointer"}}>
+            <button className ="btn btn-primary" onClick={handleLogin} type="button" 
+                style={{margin : "20px", width : "150px", padding : "10px", border: "solid 1px", cursor: "pointer"}}>
                 Login
             </button>
             <br/>
