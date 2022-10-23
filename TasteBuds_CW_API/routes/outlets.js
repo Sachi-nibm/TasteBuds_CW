@@ -4,10 +4,6 @@ const {getOutlets,newOutlet,deletOutlet,getOutletsID} = require('../controllers/
 
 router.get('/', getOutlets )
 
-router.post('/', newOutlet )
-
-router.delete('/:id', deletOutlet )
-
 router.get('/:id', getOutletsID )
 
 module.exports = router

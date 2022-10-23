@@ -7,6 +7,7 @@ const { errorHandler } = require('./middlewares/errorMiddleware')
 const { logger } = require('./middlewares/logger')
 const home = require('./routes/home');
 const Outlets = require('./routes/outlets')
+const AdminOutlets = require('./routes/adminOutlet')
 const Foods = require('./routes/foods')
 const OutletFoods = require('./routes/outletFoods')
 const user = require('./routes/users')
@@ -30,6 +31,7 @@ app.use(express.urlencoded({extended : false}))
 
 app.use("/",home);
 app.use("/api/outlets", Outlets);
+app.use("/api/admin/outlets", AdminOutlets);
 app.use("/api/foods", Foods);
 app.use("/api/outletfoods", OutletFoods);
 app.use("/api/users", user);
