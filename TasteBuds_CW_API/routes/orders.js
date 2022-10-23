@@ -1,5 +1,5 @@
-// File Name - oredrs.js
-// File Desc - oredrs.js
+// File Name - orders.js
+// File Desc - orders routes
 // Create By - Sachini Perera - 05/10/2022
 
 const express = require('express')

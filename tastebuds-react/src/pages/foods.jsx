@@ -64,7 +64,7 @@ class Foods extends Component{
         await axios.post(`http://localhost:4000/api/orders`, {
             userID : localStorage.getItem("userId"),
             foodID: id,
-            quntity: "1"
+            quantity: "1"
               })
               .then((response) => {
                 console.log("Add to Cart");

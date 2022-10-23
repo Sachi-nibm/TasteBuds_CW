@@ -2,11 +2,11 @@
     "swagger": "2.0",
     "info": {
       "version": "1.0.0",
-      "title": "TasteBuds Project CRUD(Create (POST), Read (GET), update (PUT), and delete (Delete)",
+      "title": "TasteBuds Project CRUD(Create (POST), Read (GET) and delete (Delete)",
       "description": "Tastebuds Project Application API",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
+      "Owner": {
+        "name": "Sachini Perera",
+        "description": "Tastebuds Project Application API"
       }
     },
     "host": "localhost:4000",
@@ -29,41 +29,28 @@
     "paths": {
         "/api/users": {
             "get": {
-              "tags": ["Users"],
-              "summary": "Get all users in TasteBuds application",
+              "tags": ["User Details"],
+              "summary": "Get all users details in TasteBuds application",
               "responses": {
                 "200": {
-                  "description": "OK",
+                  "description": "OK (All user Details).",
                   "schema": {
-                    "$ref": "#/definitions/Users"
+                    "$ref": "#/definitions/User"
                   }
+                },
+                "500": {
+                  "description": "ERROR"
                 }
               }
             },
             "post": {
-                "tags": ["Users"],
+                "tags": ["User Details"],
                 "summary": "Create new user for TasteBuds application",
                 "parameters": [
                   {
-                    "name": "name",
+                    "name": "User Register",
                     "in": "body",
-                    "description": "User name",
-                    "schema": {
-                      "$ref": "#/definitions/User"
-                    }
-                  },
-                  {
-                    "name": "email",
-                    "in": "body",
-                    "description": "User email",
-                    "schema": {
-                      "$ref": "#/definitions/User"
-                    }
-                  },
-                  {
-                    "name": "password",
-                    "in": "body",
-                    "description": "User password",
+                    "description": "User Register Details",
                     "schema": {
                       "$ref": "#/definitions/User"
                     }
@@ -72,10 +59,13 @@
                 "produces": ["application/json"],
                 "responses": {
                   "200": {
-                    "description": "New user is created",
+                    "description": "OK (Successfully insert the user).",
                     "schema": {
                       "$ref": "#/definitions/User"
                     }
+                  },
+                  "500": {
+                    "description": "ERROR"
                   }
                 }
               }
@@ -90,8 +80,28 @@
                 "type": "string"
               }
             ],
+            "get": {
+              "tags": ["User Details"],
+              "summary": "Get User details in TasteBuds application",
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "OK (User details)."
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
             "delete": {
-                "tags": ["Users"],
+                "tags": ["User Details"],
                 "summary": "Delete users in TasteBuds application",
                 "parameters": [
                   {
@@ -103,10 +113,104 @@
                 ],
                 "responses": {
                   "200": {
-                    "description": "Successfully deleted the user."
+                    "description": "OK (Successfully deleted the user)."
                   },
                   "500": {
-                    "description": "Internal Server Error"
+                    "description": "ERROR"
+                  }
+                }
+              }
+          }
+          , "/api/orders": {
+            "get": {
+              "tags": ["Order Details"],
+              "summary": "Get all Order details in TasteBuds application",
+              "responses": {
+                "200": {
+                  "description": "OK (All Order Details).",
+                  "schema": {
+                    "$ref": "#/definitions/Order"
+                  }
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
+            "post": {
+              "tags": ["Order Details"],
+              "summary": "Create new order for TasteBuds application",
+              "parameters": [
+                {
+                  "name": "Order Insert",
+                  "in": "body",
+                  "description": "Order Insert Details",
+                  "schema": {
+                    "$ref": "#/definitions/Order"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "OK (Successfully insert the user).",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            }
+          },
+          "/api/orders/{id}": {
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of Order that we want to find",
+                "type": "string"
+              }
+            ],
+            "get": {
+              "tags": ["Order Details"],
+              "summary": "Get Order details in TasteBuds application",
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "OK (Order details)."
+                },
+                "500": {
+                  "description": "ERROR"
+                }
+              }
+            },
+            "delete": {
+                "tags": ["Order Details"],
+                "summary": "Delete order in TasteBuds application",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "OK (Successfully deleted the user)."
+                  },
+                  "500": {
+                    "description": "ERROR"
                   }
                 }
               }
@@ -125,13 +229,24 @@
                 "type": "string"
               },
               "password": {
-                "typ,e": "string"
+                "type": "string"
               }
             }
           },
-          "Users": {
-            "type": "array",
-            "$ref": "#/definitions/User"
+          "Order": {
+            "required": ["foodID","quantity","title"],
+            "properties": {
+              "foodID": {
+                "type": "string"
+              }
+              ,
+              "quantity": {
+                "type": "Number"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
           }
         }
   }

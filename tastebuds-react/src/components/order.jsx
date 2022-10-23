@@ -1,5 +1,5 @@
-// File Name - oredr.jsx
-// File Desc - oredr.jsx
+// File Name - order.jsx
+// File Desc - order Component
 // Create By - Sachini Perera - 08/10/2022
 import React, { Component } from 'react';
 
@@ -17,7 +17,7 @@ class Order extends Component {
           />
         </td>
         <td>{this.props.item.title}</td>
-        <td>{this.props.item.quntity}</td>
+        <td>{this.props.item.quantity}</td>
         <td>
           Rs. {this.props.item.price} <span className="close"></span>
         </td>

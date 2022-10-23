@@ -1,5 +1,5 @@
 // File Name - oredrs.jsx
-// File Desc - oredrs.jsx
+// File Desc - oredrs Pages
 // Create By - Sachini Perera - 08/10/2022
 import React, { Component } from 'react';
 import CartRow from "../components/order";
@@ -12,10 +12,10 @@ class Orders extends Component {
   };
   render() {
     return (
-      <div class="col d-flex justify-content-center">
-        <div class="card" style={{ width: "45rem" }}>
+      <div className="col d-flex justify-content-center">
+        <div className="card" style={{ width: "45rem" }}>
          <h1>Your Cart</h1>
-          <table class="table">
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">Item Image</th>
@@ -46,26 +46,26 @@ class Orders extends Component {
             </div>
           </form>
           <br></br>
-          {/* <div>
+          <div>
             <button
               className="btn btn-outline-success"
               onClick={() => {
-                this.props.history.push("/change-shipping");
+                this.props.history.push("/checkout");
               }}
             >
               Check Out
             </button>
           </div>
-          <br></br> */}
+          <br></br>
         </div>
       </div>
     );
   }
- /*  async handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
     const user = localStorage.getItem("userId");
-    this.props.history.push("/change-shipping");
-  } */
+    this.props.history.push("/checkout");
+  } 
   async componentDidMount() {
     const id = localStorage.getItem("userId");
     const { data } = await axios.get(`http://localhost:4000/api/orders/${id}`);
@@ -75,7 +75,7 @@ class Orders extends Component {
       return{	
         id :  item.id,	
         foodID: item.foodID,	
-        quntity: item.quntity,	
+        quantity: item.quantity,	
         price: item.price,	
         title: item.title,	
         imagePath: item.imagePath,

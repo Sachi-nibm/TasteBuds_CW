@@ -1,3 +1,6 @@
+// File Name - order.js
+// File Desc - order Model
+// Create By - Sachini Perera - 05/10/2022 
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
@@ -7,7 +10,7 @@ const orderSchema = new mongoose.Schema({
             ref : 'Food',
         },
     
-        quntity : {
+        quantity : {
             type : Number ,
             require : true,
         },

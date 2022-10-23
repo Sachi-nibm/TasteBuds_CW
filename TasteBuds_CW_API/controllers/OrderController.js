@@ -1,5 +1,5 @@
-// File Name - OredrController
-// File Desc - OredrController
+// File Name - OrderController
+// File Desc - Order Controller
 // Create By - Sachini Perera - 05/10/2022
 
 
@@ -25,6 +25,8 @@ const order = require("../models/order");
             .send({message : ex.message});
     }
 });
+//Function Name - getAllOrders
+//Function Desc - View All Orders
 const getAllOrders= asyncHandler(async(req,res) => {
     try {
       let cart = await order.find();
@@ -40,11 +42,11 @@ const getAllOrders= asyncHandler(async(req,res) => {
   });
   
 //Function Name - newOrder
-//Function Desc - Add order to cart
+//Function Desc - Add new order to cart
 const newOrder = asyncHandler(async (req, res) => {
     let userID = req.body.userID
     let foodID = req.body.foodID
-    let quntity = req.body.quntity
+    let quantity = req.body.quantity
     console.log(userID, foodID)
 
     if (!userID || !foodID) {
@@ -58,11 +60,11 @@ const newOrder = asyncHandler(async (req, res) => {
         let newOrder = new order({
             foodID: foodID,
             title : food.name,
-            quntity: quntity,
+            quantity: quantity,
             price: food.price,
             imagePath: food.picture,
-            totalQty: quntity,
-            totalCost: food.price * quntity,
+            totalQty: quantity,
+            totalCost: food.price * quantity,
             user: userID
         })
         try {
