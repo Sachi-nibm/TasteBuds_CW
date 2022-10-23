@@ -41,10 +41,13 @@ class Wishlists extends Component {
   }
 
   async deleteItem(id) {
-      await axios.delete(`http://localhost:4000/api/wishlists/${id}`);	
-      let updatedallWishlist = this.state.allWishlist.filter(list => list.id !== id);	
-      this.setState({ allWishlist: updatedallWishlist });
-  }
+
+    await axios.delete(`http://localhost:4000/api/wishlists/${id}`);  
+    let updatedallWishlist = this.state.allWishlist.filter(item => item.id !== id);
+    this.setState({ allitems: updatedallWishlist });
+    window.location.reload(false);
+
+}
 }
 
 export default Wishlists;

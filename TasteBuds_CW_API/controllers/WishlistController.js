@@ -45,13 +45,13 @@ const newWishlists = asyncHandler(async(req,res) => {
 });
 
 const deletWishlist = asyncHandler(async(req,res) => {
-    let wishlist = await wishlist.findOneAndDelete({_id : req.params.id})
+    let wishlists = await wishlist.findOneAndDelete({ $pull: { list: { _id: req.params.id }}});
     try {
-        if (!wishlist)
+        if (!wishlists)
           return res
             .status(404)
             .send("The outlet you request to delete,not found");
-        return res.status(200).send(wishlist);
+        return res.status(200).send(wishlists);
       } catch (err) {
             return res
                 .status(500)
