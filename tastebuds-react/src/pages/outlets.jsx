@@ -19,6 +19,7 @@ class Outlets extends Component {
                                 <OutletCard
                                     key={outlet.id}
                                     outlet={outlet}
+                                    onView={() => this.viewOutlet(outlet.id)}
                                     onDelete={() => this.deleteOutlet(outlet.id)}
                                     onWishlist={() => this.AddToWishlist(outlet.id)}
                                 />
@@ -43,6 +44,12 @@ class Outlets extends Component {
             };
         });
         this.setState({ allOutlets: oultets })
+    }
+
+    async viewOutlet(id){
+        await axios.get(`http://localhost:4000/api/outlets/${id}`)
+        let viewOutlet = this.state.allOutlets.filter(outlet => outlet.id === id)
+        this.setState({allOutlets : viewOutlet});
     }
 
     async deleteOutlet(id) {

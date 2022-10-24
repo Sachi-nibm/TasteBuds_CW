@@ -17,15 +17,17 @@ class OutletCard extends Component{
                     <br/>
                     <div className="container" >
                         <div className="raw">
-                            <Link to={`/foodview/${this.props.outlet.id}`}  className="btn btn-primary" 
-                            style={{width: "85px",marginLeft : "5px"}}>
+                            <Link to={`/foodview/${this.props.outlet.id}`}  className="btn btn-primary">
                                 View
                             </Link>{" "}
-                            <Link to="/foods" className="btn btn-success" style={{width: "85px"}}>
+                            <Link to="/foods" className="btn btn-success">
                                 Buy 
                             </Link>{"  "}
-                            <button className="btn btn-secondary" onClick={this.props.onWishlist} style={{width: "85px"}}>
+                            <button className="btn btn-secondary" onClick={this.props.onWishlist}>
                                 Favorite
+                            </button>{"  "}
+                            <button className="btn btn-info" onClick={this.props.onView}>
+                                More
                             </button>
                         </div>   
                     </div>   
