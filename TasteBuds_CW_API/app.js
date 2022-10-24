@@ -14,7 +14,7 @@ const user = require('./routes/users')
 const signin = require('./routes/signin')
 const order = require('./routes/orders')//Added by Sachini - 04/10/2022
 const wishlist = require("./routes/wishlists")
-const swaggerUi = require('swagger-ui-express');
+const swaggerUi = require('swagger-ui-express');//Added by Sachini - 15/10/2022
 const swaggerDocument = require('./swagger.json');//Added by Sachini - 15/10/2022
 const PORT = process.env.PORT || 3000;
 
@@ -40,7 +40,7 @@ app.use("/api/orders", order);//Added by Sachini - 04/10/2022
 app.use("/api/wishlists", wishlist);
 
 app.use(errorHandler)
-app.use(
+app.use(//Added by Sachini - 15/10/2022
     '/api-docs',
     swaggerUi.serve, 
     swaggerUi.setup(swaggerDocument)

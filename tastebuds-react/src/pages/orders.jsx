@@ -2,7 +2,7 @@
 // File Desc - oredrs Pages
 // Create By - Sachini Perera - 08/10/2022
 import React, { Component } from 'react';
-import CartRow from "../components/order";
+import Order from "../components/order";
 import axios from "axios";
 import { Link} from "react-router-dom";
 
@@ -27,7 +27,7 @@ class Orders extends Component {
             </thead>
             <tbody>
               {this.state.allitems.map((item) => (
-                <CartRow
+                <Order
                   key={item.id}
                   item={item}
                   onDelete={() => this.deleteItem(item.id)}
@@ -50,8 +50,7 @@ class Orders extends Component {
           <div>
           <button
               className="btn btn-outline-success"
-              onClick={() => {
-                this.props.history.push("/checkout");
+              onClick={() => {this.props.history.push("/checkout");
               }}
             >
               Check Out

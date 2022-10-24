@@ -59,7 +59,7 @@ class Foods extends Component{
         let viewFood = this.state.allFoods.filter(food => food.id === id)
         this.setState({allFoods : viewFood });
     }
-    // Create By - Sachini Perera - 08/10/2022
+    // Created By - Sachini Perera - 08/10/2022
     async AddFoodToCart(id) {
         await axios.post(`http://localhost:4000/api/orders`, {
             userID : localStorage.getItem("userId"),
@@ -74,7 +74,7 @@ class Foods extends Component{
                 console.log(error);
                 alert("something is wrong");
               });
-      }
+    }
     
 }
 

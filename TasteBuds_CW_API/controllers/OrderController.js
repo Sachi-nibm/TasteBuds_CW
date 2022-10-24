@@ -8,23 +8,6 @@ const User = require("../models/users");
 const Food  = require("../models/food");
 const order = require("../models/order");
 
-//Function Name - getOrders
-//Function Desc - View Order
- const getOrders = asyncHandler(async(req,res) => {
-    try {
-        let cart = await order.find({user : req.params.id})
-        if (!cart) {
-            return res
-                .status(404)
-                .send({meesage : "The cart you request does not exist"});
-        }
-        return res.send(cart);
-    } catch (ex) {
-        return res
-            .status(500)
-            .send({message : ex.message});
-    }
-});
 //Function Name - getAllOrders
 //Function Desc - View All Orders
 const getAllOrders= asyncHandler(async(req,res) => {
@@ -33,7 +16,7 @@ const getAllOrders= asyncHandler(async(req,res) => {
       if (!cart) {
         return res
           .status(404)
-          .send({ meesage: "The cart you request does not exist" });
+          .send({ meesage: "The request cart details does not exist" });
       }
       return res.send(cart);
     } catch (ex) {
@@ -41,6 +24,24 @@ const getAllOrders= asyncHandler(async(req,res) => {
     }
   });
   
+//Function Name - getOrders
+//Function Desc - View Order
+ const getOrders = asyncHandler(async(req,res) => {
+  try {
+      let cart = await order.find({user : req.params.id})
+      if (!cart) {
+          return res
+              .status(404)
+              .send({meesage : "The request cart details does not exist"});
+      }
+      return res.send(cart);
+  } catch (ex) {
+      return res
+          .status(500)
+          .send({message : ex.message});
+  }
+});
+
 //Function Name - newOrder
 //Function Desc - Add new order to cart
 const newOrder = asyncHandler(async (req, res) => {
@@ -50,7 +51,7 @@ const newOrder = asyncHandler(async (req, res) => {
     console.log(userID, foodID)
 
     if (!userID || !foodID) {
-        return res.status(400).send("Please send the all values");
+        return res.status(400).send("Please enter the required values");
     }
 
     let cart = await order.findOne({ user: userID })
@@ -72,8 +73,7 @@ const newOrder = asyncHandler(async (req, res) => {
             return res.send(cart);
         } catch (err) {
             return res.status(500).send(err.message);
-        }
-});
+        }});
 //Function Name - deletOrder
 //Function Desc - Delete order from cart
 const deletOrder = asyncHandler(async(req,res) => {
@@ -84,7 +84,7 @@ const deletOrder = asyncHandler(async(req,res) => {
             if (!cart)	
               return res	
                 .status(404)	
-                .send("The Item you request to delete,not found");	
+                .send("Requested item not found");	
             return res.status(200).send(cart);
       } catch (err) {
         console.log(err)	

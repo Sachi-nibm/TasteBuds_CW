@@ -1,6 +1,6 @@
 // File Name - order.jsx
 // File Desc - order Component
-// Create By - Sachini Perera - 08/10/2022
+// Created By - Sachini Perera - 08/10/2022
 import React, { Component } from 'react';
 
 class Order extends Component {
