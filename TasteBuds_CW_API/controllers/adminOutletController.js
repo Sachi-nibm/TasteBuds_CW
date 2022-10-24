@@ -5,8 +5,12 @@ const jwt = require("jsonwebtoken");
 // @desc     Get Outlets
 // @route    GET /api/outlets
 const getOutlets = asyncHandler(async (req, res) => {
-    const outlets = await Outlet.find()
-    res.status(200).json(outlets)
+    try{
+        const outlets = await Outlet.find()
+        res.status(200).json(outlets)
+    } catch(ex){
+    return res.status(500).send("Error", ex.message);
+   }
 })
 
 // @desc     Get Specific Outlets

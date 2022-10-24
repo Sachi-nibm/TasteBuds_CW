@@ -13,7 +13,7 @@ class Orders extends Component {
   };
   render() {
     return (
-      <div className="col d-flex justify-content-center" style={{paddingTop: "50px",paddingBottom: "100px"}}>
+      <div className="col d-flex justify-content-center" style={{paddingTop: "50px",paddingBottom: "106px"}}>
         <div className="card" style={{width: "45rem" ,paddingTop:"30px",paddingLeft: "30px"}}>
          <h1>Your Cart</h1>
           <table className="table">
