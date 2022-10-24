@@ -16,9 +16,6 @@ class Customers extends Component{
                             Created date : {this.props.customer.date}
                         </div>
                         <div className="col">
-                            <button className="btn btn-primary" onClick={this.props.onView}>
-                                Info
-                            </button> {"  "}
                             <button className="btn btn-danger" onClick={this.props.onDelete}>
                                 Delete
                             </button>
