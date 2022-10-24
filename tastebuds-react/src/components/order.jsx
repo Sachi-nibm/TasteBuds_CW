@@ -19,7 +19,7 @@ class Order extends Component {
         <td>{this.props.item.title}</td>
         <td>{this.props.item.quantity}</td>
         <td>
-          Rs. {this.props.item.price} <span className="close"></span>
+          Rs. {this.props.item.price}.00 <span className="close"></span>
         </td>
         <td>
           <button className="btn btn-danger" onClick={this.props.onDelete}>

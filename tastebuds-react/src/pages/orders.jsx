@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import CartRow from "../components/order";
 import axios from "axios";
+import { Link} from "react-router-dom";
 
 class Orders extends Component {
   state = {
@@ -12,8 +13,8 @@ class Orders extends Component {
   };
   render() {
     return (
-      <div className="col d-flex justify-content-center">
-        <div className="card" style={{ width: "45rem" }}>
+      <div className="col d-flex justify-content-center" style={{paddingTop: "50px",paddingBottom: "100px"}}>
+        <div className="card" style={{width: "45rem" ,paddingTop:"30px",paddingLeft: "30px"}}>
          <h1>Your Cart</h1>
           <table className="table">
             <thead>
@@ -37,24 +38,24 @@ class Orders extends Component {
           <form className="text">
             <div className="row mb-3">
               <label htmlFor="input" class="col-sm-3 col-form-label">
-                Total Amount -
+                <h5>Total Amount -</h5>
               </label>
               <div className="col text-right"></div>
-              <p htmlFor="input" class="col-sm-2 col-form-label">
-                Rs. {this.state.total}
+              <p htmlFor="input" class="col-sm-4 col-form-label">
+                <h5>Rs. {this.state.total}.00</h5>
               </p>
             </div>
           </form>
           <br></br>
           <div>
-            <button
+          <button
               className="btn btn-outline-success"
               onClick={() => {
                 this.props.history.push("/checkout");
               }}
             >
               Check Out
-            </button>
+           </button>
           </div>
           <br></br>
         </div>
