@@ -44,7 +44,7 @@ class Foods extends Component{
     }
 
     async deleteFood(id){
-        await axios.delete(`http://localhost:4000/api/outlets/${id}`, {
+        await axios.delete(`http://localhost:4000/api/foods/${id}`, {
             headers : {
                 "x-jwt-token" : localStorage.getItem("token")
             }

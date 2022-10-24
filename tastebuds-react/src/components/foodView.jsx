@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import Rating from '@mui/material/Rating';
 
 const FoodDetails = () => {
 
     const { id } = useParams();
     const [food, setFood] = useState([]);
     const [loading, setLoading] = useState(false);    
+    const [value, setValue] = useState([]);
 
     useEffect(() => {
         const getFoods = async () => {
@@ -32,11 +34,19 @@ const FoodDetails = () => {
         )
     }
 
+    <Rating
+    name="simple-controlled"
+    value={food.rating}
+    onChange={(event, newValue) => {
+        setValue(newValue);
+    }}
+/>
+
     const ShowFoods = () => {
         return (
             <div className="row ">
                 {food.map((food) => (
-                    <div className="card me-2" style={{ width: "20rem", height: "28rem", marginTop: "20px" }}  >
+                    <div className="card me-2" style={{ width: "20rem", height: "28rem", marginTop: "14px" }}  >
                         <img
                             style={{ width: "100%", height: "15vw", objectFit: "cover" }}
                             src={food.picture}
@@ -50,7 +60,7 @@ const FoodDetails = () => {
                             </p>
                             Price : {food.price}
                             <br />
-                            Rating : {food.rating}
+                            Rating : <Rating name="read-only" value={food.rating} readOnly />
                             <br />
                             <br />
                             <div className="container" style={{ padding: "0px" }}>
